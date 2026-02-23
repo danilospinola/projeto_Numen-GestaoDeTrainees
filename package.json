@@ -1,0 +1,19 @@
+{
+  "name": "projeto-numen",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {},
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch",
+    "clean": "rimraf gen dist mta_archives MakeFile*",
+    "lint": "eslint ./srv",
+    "build": "mbt build --mtar projeto-numen",
+    "bd": "npm-run-all clean build deploy",
+    "deploy": "cf deploy mta_archives/sales-order-backend.mtar --retries 0",
+    "test:unit": "vitest --dir test/unit"
+  }
+}
